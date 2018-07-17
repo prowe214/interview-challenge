@@ -21,6 +21,12 @@ export interface IRow {
 }
 
 export interface IState {
-    data: IRow[],
+    colsData: IColumns[],
     isLoaded: boolean,
+    rowsData: IRow[],
+}
+
+export interface IColumns {
+    data: any[],
+    name: string,
 }
