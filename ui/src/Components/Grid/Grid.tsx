@@ -12,28 +12,22 @@ export class Grid extends React.Component<IProps, {}> {
         super(props);
     }
 
-    public sortChart(arr: IRow[]) {
-        return arr.sort( (a, b) => {
-            return a.hourOfDay - b.hourOfDay;
-        })
-    }
-
     public render() {
-        const data = this.sortChart(this.props.data);
+        const { data } = this.props;
 
         return (
             <div className="grid">
                 <div className="row-header">
-                    <div className="col-2">Device</div>
-                    <div className="col-2">Hour</div>
-                    <div className="col-2">Clicks</div>
-                    <div className="col-2">Conversions</div>
-                    <div className="col-2">Avg CPC</div>
-                    <div className="col-2">Avg Position</div>
-                    <div className="col-2">Impressions</div>
-                    <div className="col-2">Max Impressions</div>
-                    <div className="col-2">Search Impression Share</div>
-                    <div className="col-2">Cost</div>
+                    <div className="col col-3">Device</div>
+                    <div className="col col-1 number">Hour</div>
+                    <div className="col col-2 number">Clicks</div>
+                    <div className="col col-2 number">Conversions</div>
+                    <div className="col col-2 number">Avg Position</div>
+                    <div className="col col-2 number">Impressions</div>
+                    <div className="col col-2 number">Max Impressions</div>
+                    <div className="col col-2 number">Search Impression Share</div>
+                    <div className="col col-2 number">Cost</div>
+                    <div className="col col-2 number">Avg CPC</div>
                 </div>
                 {data.map((row, index) => 
                     <GridRow row={row} key={index} />
