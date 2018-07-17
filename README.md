@@ -10,6 +10,7 @@ I implemented the following:
 
 If I were to continue working on this, my next steps would be:
 * Separating the line charts of Mobile Devices vs Tablets, because there was some ugly data "collision" revealed in the chart (multiple data points on the same hour)
+* Toggles for turning each field on / off on the chart
 * Adding unit tests -- which is new for me in React and Jest, and how it plays with Typescript
 * Redux for state management -- its kind of overkill in the current form, but would be useful if implementing filtering and advanced chart interaction
 * Serving from the same `npm start`, so we don't have to run two separate servers

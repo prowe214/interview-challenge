@@ -26,6 +26,7 @@ class App extends React.Component<{}, IState> {
      * @param rowsArray array of rows returned from db
      */
     public getColumns(rowsArray: IRow[]): IColumns[] {
+        // This plots ONLY the clicks, conversions, and impressions fields, since their data is relatively similar.
         // If we wanted to plot all fields...
         // const allFields = Object.keys(rowsArray[0]);
         const visibleFields = [
