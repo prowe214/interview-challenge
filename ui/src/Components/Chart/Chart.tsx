@@ -10,12 +10,19 @@ interface IProps {
 
 export class Chart extends React.Component<IProps, {}> {
 
+    /**
+     * Using Highcharts to render a 'Spline' chart -- a curvy multi-line chart
+     * which can have irregular intervals.
+     */
     public renderChart() {
         const { data } = this.props;
 
+        // Binds chart to #chart-container element,
+        // defines configuration
         Highcharts.chart('chart-container', {
             chart: {
                 spacingBottom: 30,
+                spacingRight: 50,
                 spacingTop: 50,
                 type: 'spline',
             },

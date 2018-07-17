@@ -2,3 +2,21 @@
     font-weight: bold;
     color: #ff6600;
 }
+
+@media (max-width: 700px) {
+    .mobile-hide {
+        display: none;
+    }
+
+    .col-1 {
+        width: calc(10% - 10px);
+    }
+    
+    .col-2 {
+        width: calc(20% - 10px);
+    }
+    
+    .col-3 {
+        width: calc(30% - 10px);
+    }
+}

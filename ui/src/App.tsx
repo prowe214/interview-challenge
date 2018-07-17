@@ -21,9 +21,9 @@ class App extends React.Component<{}, IState> {
 
     /**
      * getColumns maps all fields and their values to respective hourOfDay so they may be
-     * plotted on a line graph
+     * plotted accurately on a line graph
      * 
-     * @param rowsArray array of rows returned from data
+     * @param rowsArray array of rows returned from db
      */
     public getColumns(rowsArray: IRow[]): IColumns[] {
         // If we wanted to plot all fields...
@@ -48,14 +48,17 @@ class App extends React.Component<{}, IState> {
                 )
             })
 
-            // col.data.sort((a, b) => {
-            //     return a.
-            // })
             return col;
         })
         return colsData;
     }
 
+    /**
+     * Only one object in the array has a date associated with it.
+     * getDate finds and returns that date 
+     * 
+     * @param rowsArray array of rows returned from db
+     */
     public getDate(rowsArray: IRow[]) {
         let date = '';
         rowsArray.forEach(row => {
@@ -66,6 +69,9 @@ class App extends React.Component<{}, IState> {
         return new Date(date).toDateString();
     }
 
+    /**
+     * Fetching data from db
+     */
     public componentDidMount() {
         fetch(dataUrl)
             .then( res => res.json() )
