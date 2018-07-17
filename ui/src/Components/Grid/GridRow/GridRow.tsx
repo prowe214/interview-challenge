@@ -16,16 +16,16 @@ export class GridRow extends React.Component<IProps, {}> {
 
         return (
             <div className="row">
-                <div className="col-2">{row.device}</div>
-                <div className="col-2">{row.hourOfDay}</div>
-                <div className="col-2">{row.clicks}</div>
-                <div className="col-2">{row.conversions}</div>
-                <div className="col-2">{row.avgCpc}</div>
-                <div className="col-2">{row.avgPosition}</div>
-                <div className="col-2">{row.impressions}</div>
-                <div className="col-2">{row.maxImpressions}</div>
-                <div className="col-2">{row.searchImpressionShare}</div>
-                <div className="col-2">{row.cost}</div>
+                <div className="col col-3">{row.device}</div>
+                <div className="col col-1 number">{row.hourOfDay}</div>
+                <div className="col col-2 number">{row.clicks}</div>
+                <div className="col col-2 number">{row.conversions}</div>
+                <div className="col col-2 number">{row.avgPosition}</div>
+                <div className="col col-2 number">{row.impressions}</div>
+                <div className="col col-2 number">{row.maxImpressions}</div>
+                <div className="col col-2 number">{row.searchImpressionShare}</div>
+                <div className="col col-2 number">{row.cost.toLocaleString('USD')}</div>
+                <div className="col col-2 number">{row.avgCpc.toLocaleString('USD')}</div>
             </div>
         )
     }
