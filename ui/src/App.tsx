@@ -3,7 +3,7 @@ import './App.css';
 import { Chart } from './Components/Chart/Chart';
 import { Grid } from './Components/Grid/Grid';
 import { IColumns, IRow, IState } from './Types/Types';
-import { toTitleCase } from './util/utils';
+import { sortByHour, toTitleCase } from './util/utils';
 
 const dataUrl = 'http://localhost:3001/data';
 
@@ -38,17 +38,20 @@ class App extends React.Component<{}, IState> {
                 data: [],
                 name: toTitleCase(field),
             };
-            rowsArray.forEach((row: IRow) => {
-                col.data.push(
+            col.data = rowsArray.map((row: IRow) => {
+                return (
                     [
                         row.hourOfDay,
                         row[field]
                     ]
                 )
             })
+
+            // col.data.sort((a, b) => {
+            //     return a.
+            // })
             return col;
         })
-        console.log(colsData)
         return colsData;
     }
 
@@ -56,11 +59,13 @@ class App extends React.Component<{}, IState> {
         fetch(dataUrl)
             .then( res => res.json() )
             .then( (result) => { 
-                const columns = this.getColumns(result.rows);
+                const sortedResults = sortByHour(result.rows);
+                const columns = this.getColumns(sortedResults);
+
                 this.setState({
                     colsData: columns,
                     isLoaded: true,
-                    rowsData: result.rows,
+                    rowsData: sortedResults,
                 }) 
             }, err => console.warn(err) )
     }
