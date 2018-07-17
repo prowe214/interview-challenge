@@ -16,6 +16,7 @@ export class GridRow extends React.Component<IProps, {}> {
 
         return (
             <div className="row">
+                <div className="col-2">{row.device}</div>
                 <div className="col-2">{row.hourOfDay}</div>
                 <div className="col-2">{row.clicks}</div>
                 <div className="col-2">{row.conversions}</div>
