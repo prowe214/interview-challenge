@@ -13,6 +13,7 @@ class App extends React.Component<{}, IState> {
 
         this.state = {
             colsData: [],
+            date: '',
             isLoaded: false,
             rowsData: [],
         }
@@ -55,15 +56,27 @@ class App extends React.Component<{}, IState> {
         return colsData;
     }
 
+    public getDate(rowsArray: IRow[]) {
+        let date = '';
+        rowsArray.forEach(row => {
+            if (row.hasOwnProperty('date')) {
+                date = row.date;
+            }
+        })
+        return new Date(date).toDateString();
+    }
+
     public componentDidMount() {
         fetch(dataUrl)
             .then( res => res.json() )
             .then( (result) => { 
                 const sortedResults = sortByHour(result.rows);
                 const columns = this.getColumns(sortedResults);
+                const date = this.getDate(result.rows);
 
                 this.setState({
                     colsData: columns,
+                    date,
                     isLoaded: true,
                     rowsData: sortedResults,
                 }) 
@@ -71,7 +84,7 @@ class App extends React.Component<{}, IState> {
     }
 
     public render() {
-        const { colsData, isLoaded, rowsData } = this.state;
+        const { colsData, date, isLoaded, rowsData } = this.state;
 
         if (!isLoaded) {
             return (
@@ -80,8 +93,13 @@ class App extends React.Component<{}, IState> {
         } else {
             return (
                 <div className="container">
-                    <Chart data={colsData}/>
-                    <Grid data={rowsData} />
+                    <div className="title">Paul Rowe | <span>Code Challenge: Adcellerant</span></div>
+                    <div className="chart-container">
+                        <Chart data={colsData} subtitle={date}/>
+                    </div>
+                    <div className="grid-container">
+                        <Grid data={rowsData} />
+                    </div>
                 </div>
             )
         }

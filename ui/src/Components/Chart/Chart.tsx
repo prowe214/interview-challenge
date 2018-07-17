@@ -1,9 +1,11 @@
 import * as Highcharts from 'highcharts';
 import * as React from 'react';
 import { IColumns } from '../../Types/Types';
+import './chart.css';
 
 interface IProps {
-    data: IColumns[]
+    data: IColumns[],
+    subtitle: string
 }
 
 export class Chart extends React.Component<IProps, {}> {
@@ -13,9 +15,11 @@ export class Chart extends React.Component<IProps, {}> {
 
         Highcharts.chart('chart-container', {
             chart: {
-                type: 'spline'
+                spacingBottom: 30,
+                spacingTop: 50,
+                type: 'spline',
             },
-            colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
+            colors: ['#000', '#aaa', '#ff6600', '#036', '#000'],
             plotOptions: {
                 spline: {
                     marker: {
@@ -24,6 +28,9 @@ export class Chart extends React.Component<IProps, {}> {
                 }
             },
             series: data,
+            subtitle: {
+                text: this.props.subtitle.toString(),
+            },
             title: {
                 text: 'Ad Campaign Performance On One Day'
             },

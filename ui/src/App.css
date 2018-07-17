@@ -3,12 +3,40 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: gray;
+.title {
+    font-weight: bold;
+    font-size: 1.4em;
+    padding: 10px;
+}
+.title > span {
+    color: rgba(255, 102, 0, 1);
+    font-weight: lighter;
+}
+
+.container:before {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    
+    display: block;
+    width: 110%;
+    height: 110%;
+
+    filter: blur(10px);
+    background-image: url('https://www.forexfactory.com/attachment.php?attachmentid=226781&d=1238538334');
+    background-attachment: fixed;
+    
 }
 
 .container {
-    background-color: rgba(255,255,255,0.9);
+    background-color: white;
     width: 80%;
     margin: 0 auto;
+    box-shadow: 0 0 3px black;
+}
+
+.grid-container {
+    padding: 20px;
 }

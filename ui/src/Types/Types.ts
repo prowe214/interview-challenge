@@ -22,6 +22,7 @@ export interface IRow {
 
 export interface IState {
     colsData: IColumns[],
+    date: string,
     isLoaded: boolean,
     rowsData: IRow[],
 }

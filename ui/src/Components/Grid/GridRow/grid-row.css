@@ -25,6 +25,6 @@
 }
 
 .row:hover {
-    background-color: lightcyan;
+    background-color: rgba(255, 102, 0, 0.2);
     cursor: pointer;
 }
